@@ -69,10 +69,11 @@ class userCollection {
   async authenticateJWT(token) {
     try {
 
+      //find user obj from token 
       const tokenObj = jwt.verify(token, SECRET);
       let user = await this.Model.findOne({ username: tokenObj.username });
       if (user) {
-        return Promise.resolve(tokenObj);
+        return Promise.resolve(user);
       } else {
         return Promise.reject();
       }
