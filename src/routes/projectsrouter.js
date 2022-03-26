@@ -5,7 +5,7 @@ const router = express.Router();
 const bearerAuth = require('../middleware/bearer');//middleware to check for token 
 const project = require('../collections/project-collection.js');
 
-// router.get('/projects',bearerAuth, getAllUserProjects);
+router.get('/projects',bearerAuth, getAllUserProjects);
 // router.get('/project/:id',bearerAuth, getProjectById);
 
 router.post('/project',bearerAuth,  addNewProject);
@@ -19,8 +19,12 @@ function addNewProject(req, res) {
   }).catch(err=>err.message);
 }
 
-function signinHandler(req, res) {
-  res.json({ token: req.token });
+function getAllUserProjects(req, res) {
+  project.findUserProjects(req.user).then((data)=>{
+
+    res.json({ data });
+  })
+
 }
 
 module.exports = router;
