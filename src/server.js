@@ -5,7 +5,7 @@ const authenticationRouter = require('./routes/authrouter.js');
 const projectsRouter = require('./routes/projectsrouter.js');
 
 const corsOptions = {
-  origin: 'https://seedind-fund-react-dina.netlify.app/', //for demo purposes only
+  origin: '*', //for demo purposes only
   credentials: true,
   optionSuccessStatus: 200,
 };
