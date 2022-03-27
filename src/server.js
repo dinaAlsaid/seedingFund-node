@@ -10,7 +10,7 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 // ----- middlewares-----
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // ----- routes-------
