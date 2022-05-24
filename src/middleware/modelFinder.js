@@ -6,7 +6,7 @@ function modelFinder(req, res, next) {
     req.model = require('../../models/products/products.collection.js');
     break;
   case 'todo':
-    req.model = require('../../models/todo/todo.collection.js');
+    req.model = require('../../models/journal/todo.collection.js');
     break;
   default:
     throw new Error('invalid model name');

@@ -1,0 +1,31 @@
+"use strict";
+
+const UserModel = require("../services/seedfund/models/projectSchema.js");
+
+class projectCollection {
+  constructor() {
+    this.Model = UserModel;
+  }
+
+  async newProject(record, user) {
+    try {
+      record.user = user._id;
+      //create a new record
+      const newRec = new this.Model(record);
+      return newRec.save();
+    } catch (err) {
+      return err.messsage;
+    }
+  }
+
+  async findUserProjects(user) {
+    try {
+      let records = await this.Model.find({ user: user._id });
+      return records;
+    } catch (err) {
+      return err.messsage;
+    }
+  }
+}
+
+module.exports = new projectCollection();
