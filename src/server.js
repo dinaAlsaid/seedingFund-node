@@ -4,6 +4,7 @@ const cors = require('cors');
 const authenticationRouter = require('./routes/authrouter.js');
 const projectsRouter = require('./routes/projectsrouter.js');
 
+
 const corsOptions = {
   origin: '*', //for demo purposes only
   credentials: true,
@@ -14,8 +15,9 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // ----- routes-------
-app.use('/', authenticationRouter);
-app.use('/', projectsRouter);
+app.use('/users', authenticationRouter);
+app.use('/seedfund', projectsRouter);
+app.use('/journal', projectsRouter);
 
 
 module.exports = {

@@ -1,6 +1,6 @@
 'use strict';
 
-const userCollection = require('../collections/user-collection.js');
+const userCollection = require('../collections/user.collection.js');
 
 module.exports = (req, res, next) => {
   //checks for token
