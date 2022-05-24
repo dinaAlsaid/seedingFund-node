@@ -34,18 +34,55 @@ function postHandler(req,res){
 }
 
 function getAllHandler(req,res){
+  req.model
+    .read(null)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err.message);
+    });
 
 }
 
 function getByIdHandler(req,res){
+  let _id = req.params.id;
+  req.model
+    .read(_id)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err.message);
+    });
 
 }
 
 function updateHandler(req,res){
+  let record=req.body;
+  record.id = req.params.id;
+
+  req.model
+    .update(record)
+    .then((rec) => {
+      res.status(200).json(rec);
+    })
+    .catch((err) => {
+      console.error(err.message);
+    });
 
 }
 
 function deleteHandler(req,res){
+  let id = req.params.id;
+  req.model
+    .delete(id)
+    .then((data) => {
+      res.status(200).json({ data });
+    })
+    .catch((err) => {
+      console.error(err.message);
+    });
 
 }
 
