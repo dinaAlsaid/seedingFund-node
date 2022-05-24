@@ -2,8 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
-const bearerAuth = require('../middleware/bearer');//middleware to check for token 
-const project = require('../collections/project.collection.js');
+const bearerAuth = require('../../../middleware/bearer.js');//middleware to check for token 
+const project = require('../models/project.collection.js');
 
 router.get('/projects',bearerAuth, getAllUserProjects);
 // router.get('/project/:id',bearerAuth, getProjectById);

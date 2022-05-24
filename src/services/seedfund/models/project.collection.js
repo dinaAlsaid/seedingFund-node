@@ -1,6 +1,6 @@
 "use strict";
 
-const UserModel = require("../services/seedfund/models/projectSchema.js");
+const UserModel = require("./projectSchema.js");
 
 class projectCollection {
   constructor() {
