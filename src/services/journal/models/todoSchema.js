@@ -7,5 +7,5 @@ const todo = mongoose.Schema({
   importance: { type: Number, required: true },
   assignee: { type: String, required: true },
 });
-
-module.exports = mongoose.model("todo", todo);
+const journalDB = mongoose.connection.useDb('journal');
+module.exports = journalDB.model("todo", todo);

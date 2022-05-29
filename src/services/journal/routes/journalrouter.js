@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const BearerMW = require("../../../middleware/bearer");
-const modelFinder = require("../../../middleware/modelFinder");
+const modelFinder = require("../middlewares/modelFinder");
 
 /** %baseUrl%/journal/:model
  * available endpoints:
@@ -12,16 +12,18 @@ const modelFinder = require("../../../middleware/modelFinder");
 router.param("model", modelFinder);
 
 //#region ----- methods-------
-router.post("/:model", BearerMW, postHandler); //add a new record
-router.get("/:model", BearerMW, getAllHandler); //get all records
-router.get("/:model/:id", BearerMW, getByIdHandler); //get a specific record
-router.put("/:model/:id", BearerMW, updateHandler); //update a record
-router.delete("/:model/:id", BearerMW, deleteHandler); //delete a specific record
+router.post("/:model", postHandler); //add a new record
+router.get("/:model", getAllHandler); //get all records
+router.get("/:model/:id", getByIdHandler); //get a specific record
+router.put("/:model/:id", updateHandler); //update a record
+router.delete("/:model/:id", deleteHandler); //delete a specific record
 
 //#endregion
 
 //#region ----- handlers-------
 function postHandler(req, res) {
+  let record= req.body
+  console.log(req.body)
   req.model
     .create(record)
     .then((rec) => {

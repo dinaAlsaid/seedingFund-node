@@ -6,5 +6,5 @@ const user = mongoose.Schema({
     AccountType: { type: 'string', required: true, enum: ['Admin', 'Project Owner'] },
 
 });
-
-module.exports = mongoose.model('user', user);
+const userDB = mongoose.connection.useDb('users');
+module.exports = userDB.model('user', user);
